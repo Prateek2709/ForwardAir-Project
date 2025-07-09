@@ -1,0 +1,79 @@
+# Docs for the Azure Web Apps Deploy action httpsgithub.comAzurewebapps-deploy
+# More GitHub Actions for Azure httpsgithub.comAzureactions
+# More info on Python, GitHub Actions, and Azure App Service httpsaka.mspython-webapps-actions
+
+name Build and deploy Python app to Azure Web App - forwardairapi
+
+on
+  push
+    branches
+      - main
+  workflow_dispatch
+
+jobs
+  build
+    runs-on ubuntu-latest
+    permissions
+      contents read #This is required for actionscheckout
+
+    steps
+      - uses actionscheckout@v4
+
+      - name Set up Python version
+        uses actionssetup-python@v5
+        with
+          python-version '3.13'
+
+      - name Create and start virtual environment
+        run 
+          python -m venv venv
+          source venvbinactivate
+      
+      - name Install dependencies
+        run pip install -r requirements.txt
+        
+      # Optional Add step to run tests here (PyTest, Django test suites, etc.)
+
+      - name Zip artifact for deployment
+        run zip release.zip . -r
+
+      - name Upload artifact for deployment jobs
+        uses actionsupload-artifact@v4
+        with
+          name python-app
+          path 
+            release.zip
+            !venv
+
+  deploy
+    runs-on ubuntu-latest
+    needs build
+    
+    permissions
+      id-token write #This is required for requesting the JWT
+      contents read #This is required for actionscheckout
+
+    steps
+      - name Download artifact from build job
+        uses actionsdownload-artifact@v4
+        with
+          name python-app
+
+      - name Unzip artifact for deployment
+        run unzip release.zip
+
+      
+      - name Login to Azure
+        uses azurelogin@v2
+        with
+          client-id ${{ secrets.AZUREAPPSERVICE_CLIENTID_BBDCB50EE31F4BCB8C0CC60C7B31D094 }}
+          tenant-id ${{ secrets.AZUREAPPSERVICE_TENANTID_041DCCBC16A646AD80232A26E5AA7F0E }}
+          subscription-id ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A70659A2029842638828332BB333FFBB }}
+
+      - name 'Deploy to Azure Web App'
+        uses azurewebapps-deploy@v3
+        id deploy-to-webapp
+        with
+          app-name 'forwardairapi'
+          slot-name 'Production'
+          
