@@ -16,6 +16,7 @@ from langchain_core.prompts import ChatPromptTemplate, MessagesPlaceholder
 from langchain_openai import AzureChatOpenAI
 from reportlab.lib.pagesizes import letter
 from reportlab.pdfgen import canvas
+import uvicorn
 
 # Load env variables
 load_dotenv()
@@ -191,3 +192,6 @@ async def download_chat(user_id: str, conversation_id: str):
 
     pdf.save()
     return FileResponse(path, media_type="application/pdf", filename=filename)
+
+if __name__ == "__main__":
+    uvicorn.run(app, host="0.0.0.0", port=8000)
