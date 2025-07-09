@@ -1,0 +1,13 @@
+fastapi
+uvicorn
+python-dotenv
+pydantic
+python-docx
+PyPDF2
+langchain
+langchain-community
+langchain-core
+langchain-openai
+sentence-transformers
+faiss-cpu
+reportlab
