@@ -1,2 +1,2 @@
-This project involves creating a conversational RAG chatbot with memory feature created using OpenAI and LangChain frameworks. Furthermore, it assigns unique user and conversation IDs each time a new chat is created, and allows the users to download (PDF chats), retrieve and continue old chats using those IDs.
-The main.py file works on a FastAPI framework while the final.py works ona Streamlit web UI.
+- This project involves creating a conversational RAG chatbot with memory feature created using OpenAI and LangChain frameworks. Furthermore, it assigns unique user and conversation IDs each time a new chat is created, and allows the users to download (PDF chats), retrieve and continue old chats using those IDs.
+- The main.py file works on a FastAPI framework while the final.py works ona Streamlit web UI.
