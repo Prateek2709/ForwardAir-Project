@@ -1,0 +1,5 @@
+services:
+  api:
+    image: forwardair-fastapi:latest
+    ports:
+      - "8000:8000"
