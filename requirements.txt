@@ -12,3 +12,4 @@ sentence-transformers
 faiss-cpu
 reportlab
 langchain-text-splitters
+python-multipart
