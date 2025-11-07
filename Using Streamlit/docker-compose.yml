@@ -1,3 +1,7 @@
+# run `docker compose up` in CLI, to run, but don't click on the localhost link
+# instead, open your browser and go to http://localhost:8501/docs to see interface
+# after running, run `docker compose down` to stop the container
+
 services:
   streamlit:
     build: .
