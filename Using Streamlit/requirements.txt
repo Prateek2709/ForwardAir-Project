@@ -1,0 +1,14 @@
+streamlit
+python-dotenv
+python-docx
+PyPDF2
+reportlab
+
+langchain
+langchain-core
+langchain-community
+langchain-openai
+langchain-text-splitters
+
+sentence-transformers
+faiss-cpu
