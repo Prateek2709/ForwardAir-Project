@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.log
+
+# Virtual envs
+.env
+.venv/
+venv/
+
+# Git / IDE
+.git/
+.gitignore
+.gitattributes
+.idea/
+.vscode/
+
+# OS
+.DS_Store
+
+# Local data / indices (we'll mount if needed)
+faiss_index/
+*.faiss
+*.pkl
