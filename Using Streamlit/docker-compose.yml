@@ -1,0 +1,12 @@
+services:
+  streamlit:
+    build: .
+    container_name: forwardair-streamlit
+    ports:
+      - "8501:8501"
+    env_file:
+      - .env
+    volumes:
+      # Persist FAISS index between runs (optional, but useful)
+      - ./faiss_index:/app/faiss_index
+    restart: unless-stopped
