@@ -1,3 +1,4 @@
+# Streamlit Dockerfile
 FROM python:3.11-slim
 
 # Prevent Python from writing .pyc files and enable unbuffered logs
@@ -21,5 +22,5 @@ COPY . .
 # Streamlit port
 EXPOSE 8501
 
-# Run Streamlit app
+# Run Streamlit app (Change final.py if your module/object is different)
 CMD ["streamlit", "run", "final.py", "--server.port=8501", "--server.address=0.0.0.0"]
