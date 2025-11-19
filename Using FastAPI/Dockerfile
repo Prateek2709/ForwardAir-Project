@@ -1,5 +1,5 @@
 # Dockerfile.fastapi
-FROM python:3.13-bookworm
+FROM python:3.13-slim
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
@@ -14,3 +14,4 @@ COPY . .
 EXPOSE 8000
 # Change main:app if your module/object is different
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
+
